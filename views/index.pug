@@ -1,0 +1,28 @@
+extends layout
+
+block content
+
+  h1= title
+  p Welcome to #{title}
+
+  h2 Categories 
+
+  ul 
+    if(categories.length > 0)
+      each val in categories
+        li  
+          a(href=val.url) #{val.name}
+    else 
+        li There are no categories
+
+  hr 
+
+  h2 Items 
+
+  ul 
+    if(items.length > 0)
+      each item in items 
+        li 
+          a(href=item.url)  #{item.name} 
+    else 
+      li There are no items here

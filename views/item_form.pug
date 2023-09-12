@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= title
+
+  form(action='' method="POST")
+    label(for="item_name") Enter name of Item
+    input(type="text" id="item_name" name="item_name" value=(undefined == item.name ? '' : item.name))
+
+    label(for="item_category") Choose category:
+    select#selectCat(name="category" type="select" placeholder="Select category")
+      for val in categories
+        option(value=val._id selected=(undefined == item.category ? false : (item.category.toString() === val._id.toString()))) #{val.name}
+
+    label(for="author") Enter item author
+    input#author(type="text", name="author" value=(undefined == item.author ? '' : item.author))
+
+    label(for="item_price") Enter item price
+    input(type="text" id="item_price" name="item_price" value=(undefined == item.price ? '' : item.price))
+
+    label(for="item_des") Enter item description
+    textarea#item_des(name="item_des" cols="20" rows="10" value=(item.description == undefined ? '' : item.description))
+
+    input(type="submit")
+
+  if errors
+    ul
+      for err in errors
+        li!= err.msg

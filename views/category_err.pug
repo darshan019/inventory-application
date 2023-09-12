@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+
+  h1= title 
+  
+  h2 Delete the following items first and then delete the category: #{category.name} 
+
+  ul 
+    for item in items 
+      li
+        h4 #{item.name}
+        p #{item.description}
+        p #{item.price}
+        p Go to the item 
+          a(href=`/item/${item._id}`) here

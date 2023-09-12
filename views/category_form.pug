@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+  h1= title 
+
+  form(action='' method="POST")
+    label(for="cat_name") Enter name of Category
+    input(type="text" id="cat_name" name="cat_name" value=(category.name == undefined ? '' : category.name))
+
+    label(for="cat_des") Enter category description
+    textarea#cat_des(name="cat_des", cols="20", rows="10" value=(category.description == undefined ? '' : category.description))
+
+    input(type="submit")
+
+  if errors 
+    ul 
+      for err in errors 
+        li!= err.msg
