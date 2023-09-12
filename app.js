@@ -14,11 +14,7 @@ mongoose.set("strictQuery", false)
 
 var app = express();
 
-main().catch((err) => console.log(err))
-
-async function main() {
-  await mongoose.connect(process.env.mongoDB)
-}
+mongoose.connect(process.env.mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
