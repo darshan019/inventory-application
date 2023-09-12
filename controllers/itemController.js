@@ -13,7 +13,7 @@ exports.item_detail = asyncHandler(async (req, res, next) => {
 })
 
 exports.item_create = asyncHandler(async (req, res, next) => {
-  const categories = await Category.find({})
+  const categories = await Category.find({}).exec()
 
   res.render("item_form", {
     categories: categories,

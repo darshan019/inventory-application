@@ -9,8 +9,8 @@ const categoryController = require("../controllers/categoryController")
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   const [allItems, allCategories] = await Promise.all([
-    await Item.find({}).sort({name: 1}).exec(),
-    await Category.find({}, "name").sort({name: 1}).exec()
+    Item.find({}).sort({name: 1}).exec(),
+    Category.find({}, "name").sort({name: 1}).exec()
   ])
   res.render('index', { title: 'Inventory', categories: allCategories, items: allItems });
 });
