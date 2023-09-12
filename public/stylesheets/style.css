@@ -36,4 +36,5 @@ form input[type="submit"]{
 
 form button {
   margin-top: 10px;
+  width: 120px;
 }
