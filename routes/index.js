@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const asyncHandler = require("express-async-handler")
 
 const Item = require("../models/item")
 const Category = require("../models/category")
@@ -7,13 +8,13 @@ const itemController = require("../controllers/itemController")
 const categoryController = require("../controllers/categoryController")
 
 /* GET home page. */
-router.get('/', async function(req, res, next) {
+router.get('/', asyncHandler(async (req, res, next) => {
   const [allItems, allCategories] = await Promise.all([
     Item.find({}).sort({name: 1}).exec(),
     Category.find({}, "name").sort({name: 1}).exec()
   ])
   res.render('index', { title: 'Inventory', categories: allCategories, items: allItems });
-});
+}));
 
 
 router.get("/item/:id", itemController.item_detail)

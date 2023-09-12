@@ -14,7 +14,7 @@ mongoose.set("strictQuery", false)
 
 var app = express();
 
-main().catch(err => console.log(err))
+main().catch((err) => console.log(err))
 
 async function main() {
   await mongoose.connect(process.env.mongoDB)
